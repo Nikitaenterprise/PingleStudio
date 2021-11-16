@@ -88,9 +88,9 @@ void ATrialByTargets::Destroyed()
 FTrialByTargetsSettings ATrialByTargets::GetSettings() const
 {
 	FTrialByTargetsSettings Settings;
-	Settings.NumberOfTargetsToSpawn = NumberOfTargetsToSpawn * (1 + WaveNumber * NumberOfTargetsToSpawnMultiplier);
-	Settings.RadiusOnWhichTargetsWillSpawn = SpawningSphereRadius * (1 + WaveNumber * SpawningSphereRadiusMultiplier);
-	Settings.TargetSize = StartingTargetSize + (1 + WaveNumber * TargetSizeMultiplier);
+	Settings.NumberOfTargetsToSpawn = NumberOfTargetsToSpawn * (1 + (WaveNumber - 1) * NumberOfTargetsToSpawnMultiplier);
+	Settings.RadiusOnWhichTargetsWillSpawn = SpawningSphereRadius * (1 + (WaveNumber - 1) * SpawningSphereRadiusMultiplier);
+	Settings.TargetSize = StartingTargetSize * (1 + (WaveNumber - 1) * TargetSizeMultiplier);
 	Settings.SphereCenter = SpawnPointForNextWave;
 	Settings.MinDistanceBetweenTargets = 2 * Settings.TargetSize + MinDistanceBetweenTargets;
 	return Settings;

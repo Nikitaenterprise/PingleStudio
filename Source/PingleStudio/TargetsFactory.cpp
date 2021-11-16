@@ -182,7 +182,7 @@ bool UTargetsFactory::SpawnTargetsOnSphere(UWorld* WorldContext, UClass* ClassTy
 			float RealDistanceFromCenter = (Locations[i] - TrialByTargetsSettings.SphereCenter).Size();
 			if (RealDistanceFromCenter > TrialByTargetsSettings.RadiusOnWhichTargetsWillSpawn + DeltaR || RealDistanceFromCenter < TrialByTargetsSettings.RadiusOnWhichTargetsWillSpawn - DeltaR)
 			{
-				Locations.Pop(false);
+				Locations.RemoveAtSwap(i, 1, false);
 			}
 		}
 		Locations.Shrink();
@@ -277,7 +277,7 @@ void UTargetsFactory::RandomSphere(const FTrialByTargetsSettings& Settings, TArr
 		if (Locations[i] == Locations[i + 1])
 		{
 			UE_LOG(LogTargets, Error, TEXT("Two points are at the same place. Deleting first point"));
-			Locations.Pop(false);
+			Locations.RemoveAtSwap(i, 1, false);
 		}
 	}
 	Locations.Shrink();

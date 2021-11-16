@@ -14,9 +14,11 @@ class APingleStudioGameMode : public AGameModeBase
 
 public:
 
+	UPROPERTY(BlueprintReadOnly, Category = "Assets")
 	UAssets* Assets;
 
 public:
+
 	APingleStudioGameMode();
 
 };
